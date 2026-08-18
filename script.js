@@ -8,10 +8,10 @@ const check = () => {
   console.log(value);
 
   if (value === "") {
-    result.innerHTML = `Enter a word‼️`;
+    result.innerHTML = `Enter a valid word!`;
     input.value = "";
-  } else if (value === value.split("").reverse().join("")) {
-    console.log("ok");
+  } else if (value === value.split("").reverse().join("") && value !== "") {
+    // console.log("ok");
     result.innerHTML = `${value} is a palindrome 🙂​`;
     input.value = "";
   } else {
@@ -19,6 +19,19 @@ const check = () => {
     result.innerHTML = `${value} is not a palindrome ​🤔​`;
     input.value = "";
   }
+
+  // if (value === "") {
+  //   result.innerHTML = `Enter a word‼️`;
+  //   input.value = "";
+  // } else if (value === value.split("").reverse().join("")) {
+  //   console.log("ok");
+  //   result.innerHTML = `${value} is a palindrome 🙂​`;
+  //   input.value = "";
+  // } else {
+  //   console.log("nie ok");
+  //   result.innerHTML = `${value} is not a palindrome ​🤔​`;
+  //   input.value = "";
+  // }
 };
 
 const clear = () => {
