@@ -1,5 +1,4 @@
 const input = document.getElementById("input");
-
 const checkBtn = document.querySelector(".check");
 const clearBtn = document.querySelector(".clear");
 const result = document.querySelector(".result");
@@ -7,12 +6,18 @@ const result = document.querySelector(".result");
 const check = () => {
   const value = input.value;
   console.log(value);
-  if (value === value.split("").reverse().join("")) {
+
+  if (value === "") {
+    result.innerHTML = `Enter a word‼️`;
+    input.value = "";
+  } else if (value === value.split("").reverse().join("")) {
     console.log("ok");
     result.innerHTML = `${value} is a palindrome 🙂​`;
+    input.value = "";
   } else {
     console.log("nie ok");
     result.innerHTML = `${value} is not a palindrome ​🤔​`;
+    input.value = "";
   }
 };
 
