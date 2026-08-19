@@ -15,25 +15,31 @@ body {
 .wrapper {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  justify-content: space-evenly;
+  /* height: 100vh; */
   align-items: center;
+  padding: 80px;
 }
 
 .wrapper-input {
   display: flex;
-  flex-direction: column;
+  gap: 24px;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
+  margin-top: 24px;
 }
 
 p {
   font-size: 24px;
 }
 
+.result {
+  margin-top: 80px;
+}
+
 input {
   height: 24px;
-  width: 240px;
+  width: 600px;
   padding: 4px 16px;
   background: none;
   outline: none;
@@ -42,7 +48,11 @@ input {
   color: #fff;
 }
 input::placeholder {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+input:focus {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .check {
