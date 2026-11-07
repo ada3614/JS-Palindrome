@@ -1,37 +1,43 @@
-const input = document.getElementById("input");
-const checkBtn = document.querySelector(".check");
-const clearBtn = document.querySelector(".clear");
-const result = document.querySelector(".result");
+class Palindrome {
+  constructor(inputSelector, checkSelector, clearSelector, resultSelector) {
+    this.input = document.getElementById(inputSelector);
+    this.checkBtn = document.querySelector(checkSelector);
+    this.clearBtn = document.querySelector(clearSelector);
+    this.result = document.querySelector(resultSelector);
 
-const check = () => {
-  const value = input.value;
-  console.log(value);
-
-  if (value === "") {
-    result.innerHTML = `Enter a word!`;
-    input.value = "";
-  } else if (value === value.split("").reverse().join("") && value !== "") {
-    result.innerHTML = `${value} is a palindrome 🙂​`;
-    input.value = "";
-  } else {
-    result.innerHTML = `${value} is not a palindrome ​🤔​`;
-    input.value = "";
+    this.checkBtn.addEventListener("click", this.check.bind(this));
+    this.clearBtn.addEventListener("click", this.clear.bind(this));
+    this.input.addEventListener("keyup", this.enterKeyCheck.bind(this));
   }
-};
 
-const clear = () => {
-  input.value = "";
-  result.innerHTML = "​";
-};
+  check() {
+    const value = this.input.value;
+    const normalizedValue = value.toLowerCase().replace(/[^a-z0-9]/g, "");
 
-const enterKeyCheck = (e) => {
-  if (e.key === "Enter") {
-    check();
-  } else if (e.key === "Backspace") {
-    clear();
+    if (normalizedValue === "") {
+      this.result.textContent = `Enter a word!`;
+    } else if (
+      normalizedValue === normalizedValue.split("").reverse().join("")
+    ) {
+      this.result.textContent = `${value} is a palindrome 🙂​`;
+    } else {
+      this.result.textContent = `${value} is not a palindrome ​🤔​`;
+    }
+    this.input.value = "";
   }
-};
 
-checkBtn.addEventListener("click", check);
-clearBtn.addEventListener("click", clear);
-input.addEventListener("keyup", enterKeyCheck);
+  clear() {
+    this.input.value = "";
+    this.result.textContent = "";
+  }
+
+  enterKeyCheck(e) {
+    if (e.key === "Enter") {
+      this.check(this.input);
+    } else if (e.key === "Backspace") {
+      this.clear();
+    }
+  }
+}
+
+const palindrome = new Palindrome("input", ".check", ".clear", ".result");
